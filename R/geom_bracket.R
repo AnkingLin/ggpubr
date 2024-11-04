@@ -29,8 +29,8 @@ StatBracket <- ggplot2::ggproto("StatBracket", ggplot2::Stat,
                                   data <- dplyr::bind_rows(data, data, data)
                                   data$x <- c(xmin, xmin, xmax)
                                   data$xend = c(xmin, xmax, xmax)
-                                  data$y <- c(y.position - y.scale.range*tip.length[seq_len(length(tip.length))%% 2 == 1], y.position, y.position)
-                                  data$yend <- c(y.position, y.position, y.position-y.scale.range*tip.length[seq_len(length(tip.length))%% 2 == 0])
+                                  data$y <- c(y.position - y.scale.range*tip.length[data$group[1]*2-1], y.position, y.position)
+                                  data$yend <- c(y.position, y.position, y.position-y.scale.range*tip.length[data$group[1]*2])
                                   data$annotation <- rep(label, 3)
                                   data
                                 }
